@@ -20,15 +20,15 @@ void poseCallback(const nav_msgs::Odometry::ConstPtr& odomMsg){
     }
     
     else if (marker <= 1.0){
-		speedMsg.linear.x = 0.1;
-		marker = fabs(odomMsg->pose.pose.position.x-initPx);
-	}
-	
-	else if(marker > 1.0){
-		speedMsg.linear.x = -0.1;
-	} 
+	speedMsg.linear.x = 0.1;
+	marker = fabs(odomMsg->pose.pose.position.x-initPx);
+    }
+		
+    else if(marker > 1.0){
+	speedMsg.linear.x = -0.1;
+    } 
 
-	ROS_INFO("Difference: %f, Vx-> %f\n", fabs(odomMsg->pose.pose.position.x-initPx), speedMsg.linear.x);
+    ROS_INFO("Difference: %f, Vx-> %f\n", fabs(odomMsg->pose.pose.position.x-initPx), speedMsg.linear.x);
     speed_pub.publish(speedMsg);
     
 }
