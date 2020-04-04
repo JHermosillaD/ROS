@@ -4,7 +4,7 @@
 
 int main(int argc, char**argv){
 	
-	ros::init(argc, argv, "my_fisrt_node");
+	ros::init(argc, argv, "spiral_node");
 	ros::NodeHandle n;
 	ros::Publisher speed_pub = n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
 	ros::Rate loop_rate(10);
