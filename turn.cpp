@@ -5,18 +5,14 @@
 #include "nav_msgs/Odometry.h"
 #include <math.h>  
 
-ros::Publisher speed_pub; 
-geometry_msgs::Twist speedMsg; 
+ros::Publisher move_pub; 
+geometry_msgs::Twist moveMsg; 
 
 int flag = 0;
-double roll, pitch, yaw;
-double initPx;
-double initPy;
-double inityaw;
-double yaw_degrees;
-double inityaw_degrees;
+double roll, pitch, yaw, yaw_degrees;
+double initPx, initPy, inityaw , inityaw_degrees;
 
-void poseCallback(const nav_msgs::Odometry::ConstPtr& odomMsg){
+void turnCallback(const nav_msgs::Odometry::ConstPtr& odomMsg){
 	
     // Quaternion to RPY conversion
     tf::Quaternion q(
@@ -46,27 +42,27 @@ void poseCallback(const nav_msgs::Odometry::ConstPtr& odomMsg){
 		inityaw_degrees += 360.0; 						// convert negative to positive angles
 	}
 		
-	if( fabs(yaw_degrees - inityaw_degrees) <= 90.0) {
-		speedMsg.linear.x = 0.0;
-        speedMsg.angular.z = 0.2;
+	if( fabs(yaw_degrees - inityaw_degrees) <= 90.0) {  // turn 90 degrees
+		moveMsg.linear.x = 0.0;
+        moveMsg.angular.z = 0.2;
     }
 	else {
-		speedMsg.linear.x = 0.0;
-        speedMsg.angular.z = 0.0;
+		moveMsg.linear.x = 0.0;
+        moveMsg.angular.z = 0.0;
 	}
 
 	ROS_INFO("Initial angle -> %f, Current angle -> %f, Angular displacement -> %f\n", inityaw_degrees, yaw_degrees, fabs(yaw_degrees - inityaw_degrees) );
 
-    speed_pub.publish(speedMsg);
+    move_pub.publish(moveMsg);
     
 }
 
 int main(int argc, char**argv)
 {
-  ros::init(argc, argv, "odom_pub");
+  ros::init(argc, argv, "turn_pub");
   ros::NodeHandle n;
-  ros::Subscriber sub = n.subscribe("/odom", 1000,poseCallback);
-  speed_pub = n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
+  ros::Subscriber sub = n.subscribe("/odom", 1000,turnCallback);
+  move_pub = n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
   ros::spin();
   return 0;
 }
