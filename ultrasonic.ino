@@ -1,6 +1,6 @@
-#include "ros.h"
-#include "std_msgs/Float64.h"
-#include "SR04.h"
+#include <ros.h>
+#include <std_msgs/Float64.h>
+#include <SR04.h>
 #define TRIG_PIN 12
 #define ECHO_PIN 11
 
@@ -15,7 +15,7 @@ void setup() {
 
 	n.initNode();
 	n.advertise(ultrasonic);
-	Serial.begin(9600);
+	Serial.begin(57600);
 	delay(1000);
 
 }
