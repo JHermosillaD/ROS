@@ -1,8 +1,8 @@
 # Simple navigation codes for robotics
 
 Cpp codes
-=============
-Codes written in C were tested in gazebo using kinetic ROS on a turtlebot3
+-------------
+Codes written in C were tested in Gazebo using Ubuntu with ROS kinetic on a turtlebot3
 
 Arduino codes
 -------------
