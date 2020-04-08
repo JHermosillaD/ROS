@@ -8,11 +8,14 @@
 - Support TeX (LaTeX expressions, Based on KaTeX), Flowchart and Sequence Diagram of Markdown extended syntax;
 - Support AMD/CMD (Require.js & Sea.js) Module Loader, and Custom/define editor plugins;
 
-# Simple C navigation codes for robotics
+# Simple navigation codes for robotics
 
 
-H1 Header (Underline)
+C codes
 =============
+Son los mas chingoes
+
 H2 Header (Underline)
 -------------
+teeest
 
