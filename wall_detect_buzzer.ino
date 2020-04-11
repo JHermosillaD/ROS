@@ -4,6 +4,12 @@
 #include <pitches.h>
 #define TRIG_PIN 12
 #define ECHO_PIN 11
+// Driven wheels
+#define motorPinD1 5;   // Pin 14 of L293
+#define motorPinD2 6;   // Pin 10 of L293
+// Rotation wheels
+#define motorPinR1 10;  // Pin  7 of L293
+#define motorPinR2 9;   // Pin  2 of L293
 
 ros::NodeHandle n;
 std_msgs::String Control;
