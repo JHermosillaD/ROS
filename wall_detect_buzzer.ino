@@ -66,8 +66,8 @@ void loop(){
         // pin8 output the voice, every scale is 0.5 sencond
         tone(8, melody[thisNote], duration);
       }
-      digitalWrite(motorPinD1, LOW);
-      digitalWrite(motorPinD2, LOW);
+      analogWrite(motorPinD1, speedR);
+      analogWrite(motorPinD2, speedR);
       analogWrite(motorPinR1, speedR);
       analogWrite(motorPinR2, speedR);
       Control = " Rotating ";
