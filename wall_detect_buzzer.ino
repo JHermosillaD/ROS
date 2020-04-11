@@ -1,5 +1,6 @@
 #include <ros.h>
 #include <std_msgs/Float64.h>
+#include <std_msgs/String.h>
 #include <SR04.h>
 #include <pitches.h>
 #define TRIG_PIN 12
