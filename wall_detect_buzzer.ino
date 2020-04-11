@@ -22,14 +22,6 @@ ros::Publisher Ultrasonic("Ultrasonic",&Range);
 SR04 sr04 = SR04(ECHO_PIN,TRIG_PIN);
 long a;
 
-//L293D
-// Driven wheels
-const int motorPinD1  = 5;  // Pin 14 of L293
-const int motorPinD2  = 6;  // Pin 10 of L293
-// Rotation wheels
-const int motorPinR1  = 10; // Pin  7 of L293
-const int motorPinR2  = 9;  // Pin  2 of L293
-
 // notes in the melody:
 int melody[] = { NOTE_C5, NOTE_D5, NOTE_E5, NOTE_F5, NOTE_G5, NOTE_A5, NOTE_B5, NOTE_C6 };
 int duration = 500;  // 500 miliseconds
