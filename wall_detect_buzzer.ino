@@ -12,7 +12,8 @@
 #define motorPinR1 10;  // Pin  7 of L293
 #define motorPinR2 9;   // Pin  2 of L293
 
-ros::NodeHandle n;
+ros::NodeHandle n_C;
+ros::NodeHandle n_R;
 std_msgs::String Control;
 std_msgs::Float64 Range;
 ros::Publisher Velocity("Velocity",&Control);
@@ -28,9 +29,10 @@ int duration = 500;  // 500 miliseconds
 
 void setup(){
 
-    n.initNode();
-    n.advertise(Ultrasonic);
-    n.advertise(Velocity);
+    n_C.initNode();
+    n_R.initNode();
+    n_R.advertise(Ultrasonic);
+    n_C.advertise(Velocity);
     Serial.begin(57600);
     
     //Set pins as outputs
@@ -44,7 +46,9 @@ void setup(){
     int speedR = 50;            // 0-255
     
     delay(1000);   
+    
 }
+
 void loop(){
 
     // Ultrasonic range measure
@@ -76,6 +80,8 @@ void loop(){
     Velocity.publish(&Control);
     ROS_INFO("Range -> %f, Status -> %s\n", Range, Control );
 
-    n.spinOnce();
+    n_R.spinOnce();
+    n_C.spinOnce();
     delay(1000);
+    
 }
